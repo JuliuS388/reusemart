@@ -16,6 +16,7 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($id);
         return view('barang.show', compact('barang'));
     }
+    
 
     public function create() {
         return view('barang.create');

@@ -1,40 +1,40 @@
-<!-- resources/views/pegawai/edit.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Pegawai</title>
-</head>
-<body>
-    <h1>Edit Pegawai</h1>
+@extends('layouts.app')
+
+@section('content')
+    <h2 class="mb-4">Edit Pegawai</h2>
 
     <form action="{{ route('pegawai.update', $pegawai->id_pegawai) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <label>Nama:</label><br>
-        <input type="text" name="nama_pegawai" value="{{ $pegawai->nama_pegawai }}" required><br>
-
-        <label>Email:</label><br>
-        <input type="email" name="email_pegawai" value="{{ $pegawai->email_pegawai }}" required><br>
-
-        <label>Username:</label><br>
-        <input type="text" name="username_pegawai" value="{{ $pegawai->username_pegawai }}" required><br>
-
-        <label>Password:</label><br>
-        <input type="text" name="password_pegawai" value="{{ $pegawai->password_pegawai }}" required><br>
-
-        <label>Jabatan:</label><br>
-        <select name="id_jabatan" required>
-            @foreach($jabatans as $jabatan)
-                <option value="{{ $jabatan->id_jabatan }}" {{ $pegawai->id_jabatan == $jabatan->id_jabatan ? 'selected' : '' }}>
-                    {{ $jabatan->nama_jabatan }}
-                </option>
-            @endforeach
-        </select><br><br>
-
-        <button type="submit">Update</button>
+        <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input type="text" name="nama_pegawai" value="{{ $pegawai->nama_pegawai }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email_pegawai" value="{{ $pegawai->email_pegawai }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username_pegawai" value="{{ $pegawai->username_pegawai }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="text" name="password_pegawai" value="{{ $pegawai->password_pegawai }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Jabatan</label>
+            <select name="id_jabatan" class="form-select" required>
+                @foreach($jabatans as $jabatan)
+                    <option value="{{ $jabatan->id_jabatan }}" {{ $pegawai->id_jabatan == $jabatan->id_jabatan ? 'selected' : '' }}>
+                        {{ $jabatan->nama_jabatan }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="{{ route('pegawai.index') }}" class="btn btn-secondary">← Kembali</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
     </form>
-
-    <a href="{{ route('pegawai.index') }}">Kembali</a>
-</body>
-</html>
+@endsection

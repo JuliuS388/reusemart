@@ -1,36 +1,37 @@
-<!-- resources/views/pegawai/create.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tambah Pegawai</title>
-</head>
-<body>
-    <h1>Tambah Pegawai</h1>
+@extends('layouts.app')
+
+@section('content')
+    <h2 class="mb-4">Tambah Pegawai</h2>
 
     <form action="{{ route('pegawai.store') }}" method="POST">
         @csrf
-        <label>Nama:</label><br>
-        <input type="text" name="nama_pegawai" required><br>
-
-        <label>Email:</label><br>
-        <input type="email" name="email_pegawai" required><br>
-
-        <label>Username:</label><br>
-        <input type="text" name="username_pegawai" required><br>
-
-        <label>Password:</label><br>
-        <input type="text" name="password_pegawai" required><br>
-
-        <label>Jabatan:</label><br>
-        <select name="id_jabatan" required>
-            @foreach($jabatans as $jabatan)
-                <option value="{{ $jabatan->id_jabatan }}">{{ $jabatan->nama_jabatan }}</option>
-            @endforeach
-        </select><br><br>
-
-        <button type="submit">Simpan</button>
+        <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input type="text" name="nama_pegawai" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email_pegawai" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username_pegawai" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="text" name="password_pegawai" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Jabatan</label>
+            <select name="id_jabatan" class="form-select" required>
+                @foreach($jabatans as $jabatan)
+                    <option value="{{ $jabatan->id_jabatan }}">{{ $jabatan->nama_jabatan }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="{{ route('pegawai.index') }}" class="btn btn-secondary">← Kembali</a>
+            <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
     </form>
-
-    <a href="{{ route('pegawai.index') }}">Kembali</a>
-</body>
-</html>
+@endsection
