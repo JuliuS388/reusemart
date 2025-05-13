@@ -1,6 +1,5 @@
 <h1>Tambah Barang</h1>
 
-{{-- Tampilkan error validasi --}}
 @if ($errors->any())
     <div style="color: red;">
         <ul>

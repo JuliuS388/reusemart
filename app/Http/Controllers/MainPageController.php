@@ -8,10 +8,11 @@ use App\Models\Barang;
 class MainPageController extends Controller
 {
     public function index()
-    {
-        $barang = Barang::all();
-        return view('main_page.index', compact('barang'));
-    }
+{
+    $barangs = Barang::latest()->take(8)->get();
+    return view('main_page.index', compact('barangs'));
+}
+
 
     public function showPublic($id)
     {

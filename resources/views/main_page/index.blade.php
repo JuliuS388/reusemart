@@ -2,37 +2,37 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4 text-center">Selamat Datang di <strong>ReuseMart</strong></h2>
 
-    <div id="barangCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="promoCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner">
-
-            @foreach($barang->chunk(4) as $chunkIndex => $chunk)
-            <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
-                <div class="row">
-                    @foreach($chunk as $item)
-                    <div class="col-md-3 mb-4">
-                        <div class="card h-100 shadow-sm">
-                            <img src="{{ asset('storage/' . $item->foto_thumbnail) }}" class="card-img-top" alt="{{ $item->nama_barang }}" style="height: 200px; object-fit: cover;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ $item->nama_barang }}</h5>
-                                <a href="{{ route('main_page.show', $item->id_barang) }}" class="btn btn-primary mt-auto">Lihat Detail</a>
-                            </div>
-                        </div>
+            <div class="carousel-item active">
+                <div class="p-5 rounded-4 text-white d-flex justify-content-between align-items-center" style="background-color: #42b549;">
+                    <div>
+                        <h2 class="fw-bold">Yuk, belanja di ReuseMart</h2>
+                        <p class="fs-5">Cek barang dari beragam kategori</p>
+                        <a href="#produk" class="btn btn-light fw-semibold px-4">Cek Sekarang</a>
                     </div>
-                    @endforeach
+                    <img src="{{ asset('images/maskot.png') }}" alt="Banner Image" class="img-fluid" style="max-height: 200px;">
                 </div>
             </div>
-            @endforeach
-
         </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#barangCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#barangCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
     </div>
+
+    <h4 id="produk" class="mb-4">Produk Terbaru</h4>
+    <div class="row">
+        @foreach($barangs as $barang)
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="{{ asset('storage/' . $barang->foto_thumbnail) }}" class="card-img-top" alt="{{ $barang->nama_barang }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title fw-bold">{{ $barang->nama_barang }}</h6>
+                    <p class="text-success fw-semibold">Rp{{ number_format($barang->harga, 0, ',', '.') }}</p>
+                    <a href="{{ route('main_page.show', $barang->id_barang) }}" class="btn btn-outline-success w-100">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
 </div>
 @endsection
