@@ -5,7 +5,8 @@
 @include('components.form', [
 'action' => '/transactions',
 'method' => 'POST',
-'title' => 'Create/Edit Transaction',
+'is_edit' => false,
+'title' => 'Create Transaction',
 'form_type' => 'create',
 
 'fields' => [

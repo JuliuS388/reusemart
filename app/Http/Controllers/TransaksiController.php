@@ -12,9 +12,9 @@ class TransaksiController extends Controller
     public function create_edit_transaksi($id = null){
         if ($id) {
             $transaksi = Transaksi::find($id);
-            return view('pages.create_edit_transaksi', compact('transaksi'));
+            return view('pages.create_edit_transaction', compact('transaksi'));
         }
-        return view('pages.create_edit_transaksi');
+        return view('pages.create_edit_transaction');
     }
 
     public function get_all_transaksi(){

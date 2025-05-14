@@ -16,9 +16,8 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-        $credentials = $request->only('email', 'password');
 
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string|min:8',
         ]);
@@ -30,7 +29,6 @@ class AuthController extends Controller
             return redirect()->intended('/produk');
         }
 
-        dd($request->all());
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
@@ -43,16 +41,16 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
 
         Auth::login($user);

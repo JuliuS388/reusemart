@@ -8,7 +8,7 @@
 
   <div class="flex justify-between">
     <h1 class="text-3xl font-bold">Transaksi</h1>
-    <a href='/create-edit-transactions' class="bg-green-500 cursor-pointer hover:bg-green-700 text-white px-4 py-2 rounded-lg">Add Transaction</a>
+    <a href='/create-edit-transaction' class="bg-green-500 cursor-pointer hover:bg-green-700 text-white px-4 py-2 rounded-lg">Add Transaction</a>
   </div>
 
 
