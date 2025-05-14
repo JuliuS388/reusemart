@@ -27,5 +27,7 @@ class Barang extends Model
         'status_barang',
         'id_kategori',
         'id_penitip',
+        'deskripsi_barang',
+        'berat_barang',
     ];
 }

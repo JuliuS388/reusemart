@@ -16,6 +16,12 @@
     <label>Nama Barang:</label>
     <input type="text" name="nama_barang"><br>
 
+    <label>Deskripsi Barang:</label>
+    <input type="text" name="deskripsi_barang"><br>
+
+    <label>Berat Barang:</label>
+    <input type="text" name="berat_barang"><br>
+
     <label>Kode Produk:</label>
     <input type="text" name="kode_produk"><br>
 

@@ -9,7 +9,6 @@
         </a>
     </div>
 
-
     <div class="row">
         <!-- Foto Produk -->
         <div class="col-md-6">
@@ -43,20 +42,29 @@
                 <span class="fs-4 fw-semibold text-danger">Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</span>
             </div>
 
-            <!-- Jumlah & Stok -->
-            <div class="mb-3 d-flex align-items-center">
-                <label class="me-2">Jumlah:</label>
-                <button class="btn btn-outline-secondary btn-sm">-</button>
-                <input type="text" class="form-control mx-2 text-center" style="width: 50px;" value="1" readonly>
-                <button class="btn btn-outline-secondary btn-sm">+</button>
-                <span class="ms-3 text-muted">Stok: {{ $barang->stok ?? '1' }}</span>
+            <!-- Deskripsi -->
+            @if($barang->deskripsi_barang)
+            <div class="mt-4">
+                <h6 class="fw-bold">Deskripsi Produk</h6>
+                <p>{{ $barang->deskripsi_barang }}</p>
             </div>
 
+            <!-- Berat -->
+            @if($barang->berat_barang)
+            <div class="mb-2">
+                <small class="text-muted">Berat: {{ $barang->berat_barang }}</small>
+            </div>
+            @endif
+
             <!-- Tombol -->
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 mb-3">
                 <button class="btn btn-success w-50">+ Keranjang</button>
                 <button class="btn btn-outline-success w-50">Beli</button>
             </div>
+
+            
+
+            @endif
         </div>
     </div>
 </div>
