@@ -7,6 +7,7 @@ use App\Models\RequestDonasi;
 use App\Models\Organisasi;
 use App\Models\Barang;
 use App\Models\Donasi;
+use App\Models\Penitip;
 
 class RequestDonasiController extends Controller
 {
@@ -39,6 +40,16 @@ class RequestDonasiController extends Controller
         $barang->status_barang = 'sudah didonasikan';
         $barang->save();
 
+
+        if ($barang->id_penitip) {
+            $penitip = Penitip::find($barang->id_penitip);
+            if ($penitip) {
+                $poin = floor($barang->harga_barang / 10000);
+                $penitip->poin_penitip += $poin;
+                $penitip->save();
+            }
+        }
+
         return redirect()->route('request-donasi.index')->with('success', 'Request berhasil diterima dan donasi dicatat.');
     }
 
@@ -62,6 +73,4 @@ class RequestDonasiController extends Controller
 
         return redirect()->route('donasi.histori')->with('success', 'Donasi berhasil diperbarui!');
     }
-
-
 }

@@ -35,4 +35,10 @@ class Barang extends Model
         return $this->hasOne(Donasi::class, 'id_barang');
     }
 
+    public function penitip()
+    {
+        return $this->belongsTo(Penitip::class, 'id_penitip');
+    }
+
+
 }
