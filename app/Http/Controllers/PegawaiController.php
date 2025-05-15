@@ -8,21 +8,18 @@ use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
 {
-    // Tampilkan semua pegawai
     public function index()
     {
-        $pegawais = Pegawai::with('jabatan')->get(); // ambil data pegawai dengan jabatan
+        $pegawais = Pegawai::with('jabatan')->get(); 
         return view('pegawai.index', compact('pegawais'));
     }
 
-    // Form tambah pegawai
     public function create()
     {
-        $jabatans = Jabatan::all(); // ambil semua jabatan untuk dropdown
+        $jabatans = Jabatan::all();
         return view('pegawai.create', compact('jabatans'));
     }
 
-    // Simpan pegawai baru
     public function store(Request $request)
     {
         $request->validate([
@@ -37,7 +34,6 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil ditambahkan');
     }
 
-    // Form edit pegawai
     public function edit($id)
     {
         $pegawai = Pegawai::findOrFail($id);
@@ -45,7 +41,6 @@ class PegawaiController extends Controller
         return view('pegawai.edit', compact('pegawai', 'jabatans'));
     }
 
-    // Simpan hasil edit pegawai
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -62,7 +57,6 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil diperbarui');
     }
 
-    // Hapus pegawai
     public function destroy($id)
     {
         $pegawai = Pegawai::findOrFail($id);

@@ -10,10 +10,9 @@ class Barang extends Model
     use HasFactory;
 
     protected $table = 'barang';
-    protected $primaryKey = 'id_barang'; // ✅ Set primary key yang benar
-
-    public $incrementing = true; // Jika id_barang adalah auto increment
-    protected $keyType = 'int';  // Jika id_barang bertipe integer
+    protected $primaryKey = 'id_barang';
+    public $incrementing = true; 
+    protected $keyType = 'int';  
 
     protected $fillable = [
         'foto_thumbnail',
@@ -30,4 +29,10 @@ class Barang extends Model
         'deskripsi_barang',
         'berat_barang',
     ];
+
+    public function donasi()
+    {
+        return $this->hasOne(Donasi::class, 'id_barang');
+    }
+
 }

@@ -82,7 +82,6 @@ public function update(Request $request, $id)
         'id_penitip' => 'required|integer',
     ]);
 
-    // Handle file uploads
     if ($request->hasFile('foto_thumbnail')) {
         if ($barang->foto_thumbnail) {
             Storage::disk('public')->delete($barang->foto_thumbnail);
@@ -104,7 +103,6 @@ public function update(Request $request, $id)
         $validated['foto2_barang'] = $request->file('foto2_barang')->store('barang', 'public');
     }
 
-    // Update the record
     $barang->update($validated);
 
     return redirect()->route('barang.index')->with('success', 'Barang berhasil diperbarui');
