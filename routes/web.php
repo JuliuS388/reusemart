@@ -5,6 +5,17 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\RequestDonasiController;
+use App\Http\Controllers\AuthController;
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect()->route('login.form')->with('success', 'Berhasil logout.');
+})->name('logout');
+
 
 Route::resource('pegawai', PegawaiController::class);
 

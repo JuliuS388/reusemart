@@ -47,8 +47,8 @@
                     <a href="#" class="text-dark">
                         <i class="bi bi-cart3 fs-5"></i>
                     </a>
-                    <button class="btn btn-login">Masuk</button>
-                    <button class="btn btn-daftar">Daftar</button>
+                    <a href="{{ route('login.form') }}" class="btn btn-login">Masuk</a>
+                    <a href="{{ route('register.form') }}" class="btn btn-daftar">Daftar</a>
                 </div>
             </div>
         </div>

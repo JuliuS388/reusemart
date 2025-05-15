@@ -37,8 +37,8 @@
     <label>Tanggal Masuk:</label>
     <input type="date" name="tanggal_masuk"><br>
 
-    <label>Perpanjangan:</label>
-    <input type="text" name="perpanjangan"><br>
+    <label>Tanggal Garansi:</label>
+    <input type="date" name="tanggal_garansi"><br>
 
     <label>Harga Barang:</label>
     <input type="number" step="0.01" name="harga_barang"><br>

@@ -1,4 +1,4 @@
-@extends('layouts.app_pegawai')
+@extends('layouts.app_dashboard')
 
 @section('content')
     <h2 class="mb-4">Edit Pegawai</h2>

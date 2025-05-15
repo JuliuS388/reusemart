@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Histori Donasi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
+@extends('layouts.app_dashboard')
 
+@section('content')
     <h2 class="mb-4">Histori Donasi</h2>
 
     <a href="{{ route('request-donasi.index') }}" class="btn btn-secondary mb-3">← Kembali ke Daftar Request</a>
@@ -40,7 +35,7 @@
                     </td>
                 </tr>
 
-                <div class="modal fade" id="editModal-{{ $item->id_donasi }}" tabindex="-1" aria-labelledby="editModalLabel-{{ $item->id_donasi }}" aria-hidden="true">
+                <div class="modal fade" id="editModal-{{ $item->id_donasi }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
                         <form method="POST" action="{{ route('donasi.update', $item->id_donasi) }}">
                             @csrf
@@ -70,7 +65,4 @@
             @endforeach
         </tbody>
     </table>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection

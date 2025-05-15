@@ -51,8 +51,8 @@
     <label>Tanggal Masuk:</label>
     <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk', $barang->tanggal_masuk) }}"><br>
 
-    <label>Perpanjangan:</label>
-    <input type="text" name="perpanjangan" value="{{ old('perpanjangan', $barang->perpanjangan) }}"><br>
+    <label>Tanggal Garansi:</label>
+    <input type="date" name="tanggal_garansi" value="{{ old('tanggal_garansi', $barang->tanggal_garansi) }}"><br>
 
     <label>Harga Barang:</label>
     <input type="number" step="0.01" name="harga_barang" value="{{ old('harga_barang', $barang->harga_barang) }}"><br>

@@ -1,4 +1,4 @@
-@extends('layouts.app_pegawai')
+@extends('layouts.app_dashboard')
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">

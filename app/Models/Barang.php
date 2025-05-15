@@ -21,7 +21,7 @@ class Barang extends Model
         'kode_produk',
         'nama_barang',
         'tanggal_masuk',
-        'perpanjangan',
+        'tanggal_garansi',
         'harga_barang',
         'status_barang',
         'id_kategori',

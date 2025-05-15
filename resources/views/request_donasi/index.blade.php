@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Daftar Request Donasi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
+@extends('layouts.app_dashboard')
 
+@section('content')
     <h2 class="mb-4">Daftar Request Donasi</h2>
 
     <a href="{{ route('donasi.histori') }}" class="btn btn-primary mb-3">Lihat Histori Donasi</a>
@@ -55,7 +50,7 @@
 
     @foreach($requests as $req)
         @if($req->status_request === 'pending')
-        <div class="modal fade" id="modalBarang-{{ $req->id_request_donasi }}" tabindex="-1" aria-labelledby="modalLabel-{{ $req->id_request_donasi }}" aria-hidden="true">
+        <div class="modal fade" id="modalBarang-{{ $req->id_request_donasi }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <form method="POST" action="{{ route('request-donasi.store-donasi', $req->id_request_donasi) }}">
                     @csrf
@@ -70,9 +65,7 @@
                                 <select class="form-select" name="id_barang" required>
                                     <option value="">-- Pilih Barang --</option>
                                     @foreach($barangs as $barang)
-                                        <option value="{{ $barang->id_barang }}">
-                                            {{ $barang->nama_barang }} - {{ $barang->kode_produk }}
-                                        </option>
+                                        <option value="{{ $barang->id_barang }}">{{ $barang->nama_barang }} - {{ $barang->kode_produk }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -91,7 +84,4 @@
         </div>
         @endif
     @endforeach
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection

@@ -45,6 +45,12 @@
                 <p>{{ $barang->deskripsi_barang }}</p>
             </div>
 
+            @if($barang->tanggal_garansi)
+            <div class="mb-2">
+                <span class="badge bg-info text-dark">Garansi sampai: {{ \Carbon\Carbon::parse($barang->tanggal_garansi)->translatedFormat('d F Y') }}</span>
+            </div>
+            @endif
+
             @if($barang->berat_barang)
             <div class="mb-2">
                 <small class="text-muted">Berat: {{ $barang->berat_barang }}</small>
@@ -55,8 +61,6 @@
                 <button class="btn btn-success w-50">+ Keranjang</button>
                 <button class="btn btn-outline-success w-50">Beli</button>
             </div>
-
-            
 
             @endif
         </div>
