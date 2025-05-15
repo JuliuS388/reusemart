@@ -29,8 +29,19 @@ class PenitipController extends Controller
     {
         $penitip = new Penitip();
 
+<<<<<<< HEAD
         $penitip->nama = $request->nama;
         $penitip->kontak = $request->kontak;
+=======
+        $penitip->nama_penitip = $request->nama_penitip;
+        $penitip->noTelp_penitip = $request->noTelp_penitip;
+        $penitip->email_penitip = $request->email_penitip;
+        $penitip->saldo_penitip = $request->saldo_penitip;
+        $penitip->poin_penitip = $request->poin_penitip;
+        $penitip->rating_penitip = $request->rating_penitip;
+        $penitip->username_penitip = $request->username_penitip;
+        $penitip->password_penitip = $request->password_penitip;
+>>>>>>> 6f55ef4 (Added Login and Register)
         $penitip->save();
 
         return redirect('/penitip')->with('success', 'Penitip berhasil ditambahkan');
@@ -38,10 +49,21 @@ class PenitipController extends Controller
 
     public function update_penitip(Request $request)
     {
+<<<<<<< HEAD
         $penitip = Penitip::findOrFail( $request->id);
 
         $penitip->nama = $request->nama;
         $penitip->kontak = $request->kontak;
+=======
+        $penitip = Penitip::findOrFail($request->id_penitip);
+
+        $penitip->nama_penitip = $request->nama_penitip;
+        $penitip->noTelp_penitip = $request->noTelp_penitip;
+        $penitip->email_penitip = $request->email_penitip;
+        $penitip->saldo_penitip = $request->saldo_penitip;
+        $penitip->poin_penitip = $request->poin_penitip;
+        $penitip->rating_penitip = $request->rating_penitip;
+>>>>>>> 6f55ef4 (Added Login and Register)
         $penitip->save();
 
         return redirect('/penitip')->with('success', 'Penitip berhasil diupdate');
