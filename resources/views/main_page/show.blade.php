@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    <!-- Tombol Kembali -->
     <div class="mb-3">
         <a href="{{ route('home') }}" class="btn btn-outline-secondary">
             &larr; Kembali
@@ -10,7 +9,6 @@
     </div>
 
     <div class="row">
-        <!-- Foto Produk -->
         <div class="col-md-6">
             <div id="fotoCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
                 <div class="carousel-inner rounded">
@@ -34,7 +32,6 @@
             </div>
         </div>
 
-        <!-- Detail Produk -->
         <div class="col-md-6">
             <h4 class="fw-bold">{{ $barang->nama_barang }}</h4>
             <div class="text-muted mb-2">Kode Produk: {{ $barang->kode_produk }}</div>
@@ -42,21 +39,18 @@
                 <span class="fs-4 fw-semibold text-danger">Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</span>
             </div>
 
-            <!-- Deskripsi -->
             @if($barang->deskripsi_barang)
             <div class="mt-4">
                 <h6 class="fw-bold">Deskripsi Produk</h6>
                 <p>{{ $barang->deskripsi_barang }}</p>
             </div>
 
-            <!-- Berat -->
             @if($barang->berat_barang)
             <div class="mb-2">
                 <small class="text-muted">Berat: {{ $barang->berat_barang }}</small>
             </div>
             @endif
 
-            <!-- Tombol -->
             <div class="d-flex gap-2 mb-3">
                 <button class="btn btn-success w-50">+ Keranjang</button>
                 <button class="btn btn-outline-success w-50">Beli</button>

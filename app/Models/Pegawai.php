@@ -9,16 +9,16 @@ class Pegawai extends Model
 {
     use HasFactory;
 
-    protected $table = 'pegawai'; // nama tabel
+    protected $table = 'pegawai';
 
-    protected $primaryKey = 'id_pegawai'; // primary key
+    protected $primaryKey = 'id_pegawai';
 
     protected $fillable = [
         'nama_pegawai',
         'id_jabatan',
         'email_pegawai',
         'username_pegawai',
-        'password_pegawai'
+        'tanggal_lahir_pegawai'
     ];
 
     public function jabatan()

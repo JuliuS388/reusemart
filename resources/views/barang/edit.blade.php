@@ -21,6 +21,12 @@
     <label>Nama Barang:</label>
     <input type="text" name="nama_barang" value="{{ old('nama_barang', $barang->nama_barang) }}"><br>
 
+    <label>Deskripsi Barang:</label>
+    <input type="text" name="deskripsi_barang" value="{{ old('deskripsi_barang', $barang->deskripsi_barang) }}"><br>
+
+    <label>Berat Barang:</label>
+    <input type="text" name="berat_barang" value="{{ old('berat_barang', $barang->berat_barang) }}"><br>
+
     <label>Kode Produk:</label>
     <input type="text" name="kode_produk" value="{{ old('kode_produk', $barang->kode_produk) }}"><br>
 

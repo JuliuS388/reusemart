@@ -38,7 +38,6 @@ class BarangController extends Controller
         'id_penitip' => 'required|integer',
         'deskripsi_barang' => 'nullable|string',
         'berat_barang' => 'nullable|string|max:255',
-
     ]);
 
     if ($request->hasFile('foto_thumbnail')) {
@@ -80,6 +79,8 @@ public function update(Request $request, $id)
         'status_barang' => 'required|string|max:255',
         'id_kategori' => 'required|integer',
         'id_penitip' => 'required|integer',
+        'deskripsi_barang' => 'nullable|string',
+        'berat_barang' => 'nullable|string|max:255',
     ]);
 
     if ($request->hasFile('foto_thumbnail')) {

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_pegawai')
 
 @section('content')
     <h2 class="mb-4">Edit Pegawai</h2>
@@ -19,8 +19,8 @@
             <input type="text" name="username_pegawai" value="{{ $pegawai->username_pegawai }}" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="text" name="password_pegawai" value="{{ $pegawai->password_pegawai }}" class="form-control" required>
+            <label class="form-label">Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir_pegawai" value="{{ $pegawai->tanggal_lahir_pegawai }}" class="form-control" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Jabatan</label>

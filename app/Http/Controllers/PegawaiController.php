@@ -8,11 +8,24 @@ use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pegawais = Pegawai::with('jabatan')->get(); 
+        $query = Pegawai::with('jabatan');
+
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama_pegawai', 'like', "%$search%")
+                ->orWhere('email_pegawai', 'like', "%$search%")
+                ->orWhere('username_pegawai', 'like', "%$search%");
+            });
+        }
+
+        $pegawais = $query->get();
+
         return view('pegawai.index', compact('pegawais'));
     }
+
 
     public function create()
     {
@@ -27,7 +40,7 @@ class PegawaiController extends Controller
             'id_jabatan' => 'required|exists:jabatan,id_jabatan',
             'email_pegawai' => 'required|email',
             'username_pegawai' => 'required',
-            'password_pegawai' => 'required',
+            'tanggal_lahir_pegawai' => 'required',
         ]);
 
         Pegawai::create($request->all());
@@ -48,7 +61,7 @@ class PegawaiController extends Controller
             'id_jabatan' => 'required|exists:jabatan,id_jabatan',
             'email_pegawai' => 'required|email',
             'username_pegawai' => 'required',
-            'password_pegawai' => 'required',
+            'tanggal_lahir_pegawai' => 'required',
         ]);
 
         $pegawai = Pegawai::findOrFail($id);

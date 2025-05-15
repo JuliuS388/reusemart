@@ -17,6 +17,9 @@ Route::get('/histori-donasi', [RequestDonasiController::class, 'historiDonasi'])
 Route::post('/donasi/update/{id}', [RequestDonasiController::class, 'updateDonasi'])->name('donasi.update');
 
 
+
+
+
 Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
 Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
 Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');

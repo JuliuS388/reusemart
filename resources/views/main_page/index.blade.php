@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container position-relative">
+    
 
     <div id="promoCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -12,7 +13,6 @@
                         <p class="fs-5">Cek barang dari beragam kategori</p>
                         <a href="#produk" class="btn btn-light fw-semibold px-4">Cek Sekarang</a>
                     </div>
-                    <img src="{{ asset('images/maskot.png') }}" alt="Banner Image" class="img-fluid" style="max-height: 200px;">
                 </div>
             </div>
         </div>
