@@ -14,19 +14,27 @@
             <tr>
                 <th>Id Penitip</th>
                 <th>Nama</th>
+                <th>Email</th>
                 <th>Kontak</th>
-                <th>Actions</th>
+                <th>Saldo</th>
+                <th>Poin</th>
+                <th>Rating</th>
+                <th>Action</th>
             </tr>
         <tbody>
             @foreach ($penitips as $penitip )
             <tr class="border-b-2 border-gray-200">
-                <td class="p-2">{{ $penitip->id }}</td>
-                <td class="p-2">{{ $penitip->nama }}</td>
-                <td class="p-2">{{ $penitip->kontak }}</td>
+                <td class="p-2">{{ $penitip->id_penitip }}</td>
+                <td class="p-2">{{ $penitip->nama_penitip }}</td>
+                <td class="p-2">{{ $penitip->email_penitip }}</td>
+                <td class="p-2">{{ $penitip->noTelp_penitip }}</td>
+                <td class="p-2">{{ $penitip->saldo_penitip }}</td>
+                <td class="p-2">{{ $penitip->poin_penitip }}</td>
+                <td class="p-2">{{ $penitip->rating_penitip }}</td>
 
                 <td class="flex gap-3 p-2 items-center justify-center">
-                    <a href="/create-edit-penitip?id={{ $penitip->id }}" class="bg-yellow-600 cursor-pointer hover:bg-yellow-700 text-white px-4 py-2 rounded-lg">Edit</a>
-                    <form method="POST" action="/penitip/{{ $penitip->id }}">
+                    <a href="/create-edit-penitip?id={{ $penitip->id_penitip }}" class="bg-yellow-600 cursor-pointer hover:bg-yellow-700 text-white px-4 py-2 rounded-lg">Edit</a>
+                    <form method="POST" action="/penitip/{{ $penitip->id_penitip }}">
                         @csrf 
                         @method('DELETE')
                         <button type="submit" class="bg-red-600 cursor-pointer hover:bg-red-700 text-white px-4 py-2 rounded-lg">Delete</button>

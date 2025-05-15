@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: May 12, 2025 at 12:54 AM
+=======
+-- Generation Time: May 15, 2025 at 05:58 AM
+>>>>>>> 6f55ef4 (Added Login and Register)
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -25,7 +29,10 @@ SET time_zone = "+00:00";
 
 --
 -- Table structure for table `alamat`
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6f55ef4 (Added Login and Register)
 --
 
 CREATE TABLE `alamat` (
@@ -64,6 +71,11 @@ CREATE TABLE `barang` (
   `foto2_barang` varchar(255) NOT NULL,
   `kode_produk` varchar(255) NOT NULL,
   `nama_barang` varchar(255) NOT NULL,
+<<<<<<< HEAD
+=======
+  `deskripsi_barang` varchar(255) NOT NULL,
+  `berat_barang` varchar(255) NOT NULL,
+>>>>>>> 6f55ef4 (Added Login and Register)
   `tanggal_masuk` date NOT NULL,
   `perpanjangan` varchar(255) NOT NULL,
   `harga_barang` float NOT NULL,
@@ -78,6 +90,7 @@ CREATE TABLE `barang` (
 -- Dumping data for table `barang`
 --
 
+<<<<<<< HEAD
 INSERT INTO `barang` (`id_barang`, `foto_thumbnail`, `foto1_barang`, `foto2_barang`, `kode_produk`, `nama_barang`, `tanggal_masuk`, `perpanjangan`, `harga_barang`, `status_barang`, `id_kategori`, `id_penitip`, `created_at`, `updated_at`) VALUES
 (1, 'barang/11LaSNzIkmFLgiL748shYoQwIukt9tsdDZ9WQJtE.png', 'barang/TTNHxstLeHWiUgcdZtQ26IAelVERIYKOxBZbmOyg.png', 'barang/sBuNWiHHS1p3RPvhod2aa8E0C3LneECxPPjPegsm.png', 'ELEC-001', 'Laptop Bekas ASUUS', '2024-01-15', '2024-07-15', 450000, 'Sold Out', 1, 1, NULL, '2025-05-11 15:53:33'),
 (2, '', '', '', 'FASH-101', 'Jaket Denim Levi', '2024-02-20', '2024-08-20', 1300000, 'Habis', 2, 2, NULL, NULL),
@@ -100,6 +113,30 @@ INSERT INTO `barang` (`id_barang`, `foto_thumbnail`, `foto1_barang`, `foto2_bara
 (19, '', '', '', 'TOOL-819', 'Gergaji Mesin Bosch', '2025-04-11', '2025-10-11', 1250000, 'didonasikan', 9, 9, NULL, NULL),
 (20, '', '', '', 'SPRT-920', 'Matras Yoga Tebal', '2025-04-11', '2025-10-11', 300000, 'didonasikan', 3, 10, NULL, NULL),
 (21, 'barang/T1754MIHMkipqUjunaxjnhRr0j6SUMUDxEQtQLk3.png', 'barang/7eZrhGmpW57FA0VqL5Ro01aNpoEqIASuh7FeP0wK.png', 'barang/qQEozjzhDLY20iGK36jd7g8U1rfj4Q3PyzT3z8Rc.png', 'asdasd', 'TEstt', '2025-05-12', '2025-13-08', 123123, 'Dijual', 4, 3, '2025-05-11 15:48:36', '2025-05-11 15:48:36');
+=======
+INSERT INTO `barang` (`id_barang`, `foto_thumbnail`, `foto1_barang`, `foto2_barang`, `kode_produk`, `nama_barang`, `deskripsi_barang`, `berat_barang`, `tanggal_masuk`, `perpanjangan`, `harga_barang`, `status_barang`, `id_kategori`, `id_penitip`, `created_at`, `updated_at`) VALUES
+(1, 'barang/11LaSNzIkmFLgiL748shYoQwIukt9tsdDZ9WQJtE.png', 'barang/TTNHxstLeHWiUgcdZtQ26IAelVERIYKOxBZbmOyg.png', 'barang/sBuNWiHHS1p3RPvhod2aa8E0C3LneECxPPjPegsm.png', 'ELEC-001', 'Laptop Bekas ASUUS', 'Laptop Asus generasi terbaru yang gak akan kalah jauh dari laptop lainnya', '6 KG', '2024-01-15', '2024-07-15', 450000, 'Sold Out', 1, 1, NULL, '2025-05-11 15:53:33'),
+(2, '', '', '', 'FASH-101', 'Jaket Denim Levi', '', '', '2024-02-20', '2024-08-20', 1300000, 'Habis', 2, 2, NULL, NULL),
+(3, '', '', '', 'BOOK-202', 'Novel Laskar Pelangi', '', '', '2024-03-10', '2024-09-10', 600000, 'Sold Out', 4, 3, NULL, NULL),
+(4, '', '', '', 'TOY-303', 'Action Figure Gundam', '', '', '2024-04-05', '2024-10-05', 4500000, 'Habis', 5, 4, NULL, NULL),
+(5, '', '', '', 'BABY-404', 'Stroller Bayi ABC', '', '', '2024-05-12', '2024-11-12', 2500000, 'Habis', 6, 5, NULL, NULL),
+(6, '', '', '', 'COSM-505', 'Lipstik Sephora', '', '', '2024-06-18', '2024-12-18', 750000, 'Habis', 10, 6, NULL, NULL),
+(7, '', '', '', 'AUTO-606', 'Velg Racing', '', '', '2024-07-22', '2025-01-22', 1000000, 'Habis', 7, 7, NULL, NULL),
+(8, '', '', '', 'GARD-707', 'Pot Bunga Keramik', '', '', '2024-08-30', '2025-02-28', 750000, 'Habis', 8, 8, NULL, NULL),
+(9, '', '', '', 'TOOL-808', 'Bor Listrik Makita', '', '', '2024-09-14', '2025-03-14', 2500000, 'Habis', 9, 9, NULL, NULL),
+(10, '', '', '', 'SPRT-909', 'Sepatu Lari Nike', '', '', '2024-10-25', '2025-04-25', 500000, 'Habis', 5, 10, NULL, NULL),
+(11, '', '', '', 'ELEC-011', 'Monitor LG 24 inch', '', '', '2025-04-11', '2025-10-11', 600000, 'didonasikan', 1, 1, NULL, '2025-05-14 20:52:36'),
+(12, '', '', '', 'FASH-112', 'Kemeja Batik Slimfit', '', '', '2025-04-11', '2025-10-11', 250000, 'didonasikan', 2, 2, NULL, NULL),
+(13, '', '', '', 'BOOK-213', 'Buku Fisika SMA', '', '', '2025-04-11', '2025-10-11', 120000, 'didonasikan', 4, 3, NULL, '2025-05-14 05:25:47'),
+(14, '', '', '', 'TOY-314', 'Puzzle Kayu Anak', '', '', '2025-04-11', '2025-10-11', 180000, 'didonasikan', 5, 4, NULL, NULL),
+(15, '', '', '', 'BABY-415', 'Bouncer Bayi Chicco', '', '', '2025-04-11', '2025-10-11', 320000, 'sudah didonasikan', 6, 5, NULL, '2025-05-14 20:57:07'),
+(16, '', '', '', 'COSM-516', 'Masker Wajah Garnier', '', '', '2025-04-11', '2025-10-11', 75000, 'didonasikan', 10, 6, NULL, NULL),
+(17, '', '', '', 'AUTO-617', 'Helm Full Face KYT', '', '', '2025-04-11', '2025-10-11', 850000, 'didonasikan', 7, 7, NULL, NULL),
+(18, '', '', '', 'GARD-718', 'Tanaman Hias Monstera', '', '', '2025-04-11', '2025-10-11', 500000, 'didonasikan', 8, 8, NULL, NULL),
+(19, '', '', '', 'TOOL-819', 'Gergaji Mesin Bosch', '', '', '2025-04-11', '2025-10-11', 1250000, 'didonasikan', 9, 9, NULL, NULL),
+(20, '', '', '', 'SPRT-920', 'Matras Yoga Tebal', '', '', '2025-04-11', '2025-10-11', 300000, 'didonasikan', 3, 10, NULL, NULL),
+(21, 'barang/T1754MIHMkipqUjunaxjnhRr0j6SUMUDxEQtQLk3.png', 'barang/7eZrhGmpW57FA0VqL5Ro01aNpoEqIASuh7FeP0wK.png', 'barang/qQEozjzhDLY20iGK36jd7g8U1rfj4Q3PyzT3z8Rc.png', 'asdasd', 'TEstt', '', '', '2025-05-12', '2025-13-08', 123123, 'Dijual', 4, 3, '2025-05-11 15:48:36', '2025-05-11 15:48:36');
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -107,11 +144,19 @@ INSERT INTO `barang` (`id_barang`, `foto_thumbnail`, `foto1_barang`, `foto2_bara
 -- Table structure for table `cache`
 --
 
+<<<<<<< HEAD
 -- CREATE TABLE `cache` (
 --   `key` varchar(255) NOT NULL,
 --   `value` mediumtext NOT NULL,
 --   `expiration` int(11) NOT NULL
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+CREATE TABLE `cache` (
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -119,11 +164,19 @@ INSERT INTO `barang` (`id_barang`, `foto_thumbnail`, `foto1_barang`, `foto2_bara
 -- Table structure for table `cache_locks`
 --
 
+<<<<<<< HEAD
 -- CREATE TABLE `cache_locks` (
 --   `key` varchar(255) NOT NULL,
 --   `owner` varchar(255) NOT NULL,
 --   `expiration` int(11) NOT NULL
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -165,13 +218,20 @@ INSERT INTO `detail_transaksi` (`id_barang`, `id_transaksi`, `subTotal_harga`, `
 CREATE TABLE `donasi` (
   `id_donasi` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
+<<<<<<< HEAD
   `tanggal_donasi` date NOT NULL
+=======
+  `id_request_donasi` int(11) NOT NULL,
+  `tanggal_donasi` date DEFAULT NULL,
+  `nama_penerima` varchar(255) DEFAULT NULL
+>>>>>>> 6f55ef4 (Added Login and Register)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `donasi`
 --
 
+<<<<<<< HEAD
 INSERT INTO `donasi` (`id_donasi`, `id_barang`, `tanggal_donasi`) VALUES
 (1, 15, '2024-12-01'),
 (2, 13, '2024-12-05'),
@@ -183,6 +243,10 @@ INSERT INTO `donasi` (`id_donasi`, `id_barang`, `tanggal_donasi`) VALUES
 (8, 14, '2025-01-01'),
 (9, 17, '2025-01-05'),
 (10, 20, '2025-01-10');
+=======
+INSERT INTO `donasi` (`id_donasi`, `id_barang`, `id_request_donasi`, `tanggal_donasi`, `nama_penerima`) VALUES
+(15, 15, 1, '2025-05-15', 'Leoo');
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -190,6 +254,7 @@ INSERT INTO `donasi` (`id_donasi`, `id_barang`, `tanggal_donasi`) VALUES
 -- Table structure for table `failed_jobs`
 --
 
+<<<<<<< HEAD
 -- CREATE TABLE `failed_jobs` (
 --   `id` bigint(20) UNSIGNED NOT NULL,
 --   `uuid` varchar(255) NOT NULL,
@@ -199,6 +264,17 @@ INSERT INTO `donasi` (`id_donasi`, `id_barang`, `tanggal_donasi`) VALUES
 --   `exception` longtext NOT NULL,
 --   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -229,6 +305,7 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 -- Table structure for table `jobs`
 --
 
+<<<<<<< HEAD
 -- CREATE TABLE `jobs` (
 --   `id` bigint(20) UNSIGNED NOT NULL,
 --   `queue` varchar(255) NOT NULL,
@@ -238,6 +315,17 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 --   `available_at` int(10) UNSIGNED NOT NULL,
 --   `created_at` int(10) UNSIGNED NOT NULL
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -245,6 +333,7 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 -- Table structure for table `job_batches`
 --
 
+<<<<<<< HEAD
 -- CREATE TABLE `job_batches` (
 --   `id` varchar(255) NOT NULL,
 --   `name` varchar(255) NOT NULL,
@@ -257,6 +346,20 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 --   `created_at` int(11) NOT NULL,
 --   `finished_at` int(11) DEFAULT NULL
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+CREATE TABLE `job_batches` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -352,11 +455,19 @@ INSERT INTO `merchandise` (`id_merchandise`, `nama_merchandise`, `harga_merchand
 -- Table structure for table `migrations`
 --
 
+<<<<<<< HEAD
 -- CREATE TABLE `migrations` (
 --   `id` int(10) UNSIGNED NOT NULL,
 --   `migration` varchar(255) NOT NULL,
 --   `batch` int(11) NOT NULL
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 --
 -- Dumping data for table `migrations`
@@ -378,17 +489,23 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `organisasi` (
   `id_organisasi` int(11) NOT NULL,
+<<<<<<< HEAD
   `id_donasi` int(11) NOT NULL,
   `id_alamat` int(11) NOT NULL,
   `nama_organisasi` varchar(255) NOT NULL,
   `nama_penerima` varchar(255) NOT NULL,
   `request` varchar(255) NOT NULL
+=======
+  `nama_organisasi` varchar(255) NOT NULL,
+  `alamat_organisasi` varchar(255) NOT NULL
+>>>>>>> 6f55ef4 (Added Login and Register)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `organisasi`
 --
 
+<<<<<<< HEAD
 INSERT INTO `organisasi` (`id_organisasi`, `id_donasi`, `id_alamat`, `nama_organisasi`, `nama_penerima`, `request`) VALUES
 (1, 1, 1, 'Yayasan Anak Bangsa', 'Joko', 'Perlengkapan Bayi'),
 (2, 2, 3, 'Rumah Baca Jogja', 'Mukti', 'Buku Bacaan Anak'),
@@ -400,6 +517,19 @@ INSERT INTO `organisasi` (`id_organisasi`, `id_donasi`, `id_alamat`, `nama_organ
 (8, 8, 6, 'Komunitas Otomotif Anak', 'Jarwo', 'Peralatan Otomotif'),
 (9, 9, 9, 'Karang Taruna Anak Bangsa', 'Rama', 'Peralatan Olahraga'),
 (10, 10, 10, 'Panti Asuhan Cinta Kasih', 'Shinta', 'Sepatu Layak Pakai');
+=======
+INSERT INTO `organisasi` (`id_organisasi`, `nama_organisasi`, `alamat_organisasi`) VALUES
+(1, 'Yayasan Anak Bangsa', '1'),
+(2, 'Rumah Baca Jogja', '3'),
+(3, 'Komunitas Hijau DIY', '8'),
+(4, 'Rumah Singgah Anak', '2'),
+(5, 'Panti Jompo Yogyakarta', '7'),
+(6, 'Bengkel Belajar Otomotif', '5'),
+(7, 'Sekolah Darurat Indonesia', '4'),
+(8, 'Komunitas Otomotif Anak', '6'),
+(9, 'Karang Taruna Anak Bangsa', '9'),
+(10, 'Panti Asuhan Cinta Kasih', '10');
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -490,6 +620,10 @@ CREATE TABLE `penitip` (
   `email_penitip` varchar(255) NOT NULL,
   `noTelp_penitip` varchar(255) NOT NULL,
   `saldo_penitip` float NOT NULL,
+<<<<<<< HEAD
+=======
+  `poin_penitip` float NOT NULL,
+>>>>>>> 6f55ef4 (Added Login and Register)
   `rating_penitip` float NOT NULL,
   `username_penitip` varchar(255) NOT NULL,
   `password_penitip` varchar(255) NOT NULL
@@ -499,6 +633,7 @@ CREATE TABLE `penitip` (
 -- Dumping data for table `penitip`
 --
 
+<<<<<<< HEAD
 INSERT INTO `penitip` (`id_penitip`, `nama_penitip`, `email_penitip`, `noTelp_penitip`, `saldo_penitip`, `rating_penitip`, `username_penitip`, `password_penitip`) VALUES
 (1, 'Julius', 'julius@gmail.com', '089577776666', 1000000, 5, 'julius', 'julius123'),
 (2, 'Bagas', 'bagas@gmail.com', '085211112222', 1500000, 4, 'bagas', 'bagas1010'),
@@ -511,6 +646,49 @@ INSERT INTO `penitip` (`id_penitip`, `nama_penitip`, `email_penitip`, `noTelp_pe
 (9, 'Luke', 'luke@gmail.com', '081122334455', 6000000, 3, 'luke', 'luke8272'),
 (10, 'Jenny', 'jenny@gmail.com', '082855667788', 4000000, 3, 'jenny', 'jenny4464'),
 (11, 'Ken Rocky', 'ken@gmail.com', '086928435778', 500000, 4, 'ken', 'kenrocky123');
+=======
+INSERT INTO `penitip` (`id_penitip`, `nama_penitip`, `email_penitip`, `noTelp_penitip`, `saldo_penitip`, `poin_penitip`, `rating_penitip`, `username_penitip`, `password_penitip`) VALUES
+(1, 'Julius', 'julius@gmail.com', '089577776666', 1000000, 60, 5, 'julius', 'julius123'),
+(2, 'Bagas', 'bagas@gmail.com', '085211112222', 1500000, 0, 4, 'bagas', 'bagas1010'),
+(3, 'Kristina', 'kristina@gmail.com', '082333334444', 1300000, 0, 4, 'kristina', 'kristina0909'),
+(4, 'Bambang', 'bambang@gmail.com', '081955556666', 3000000, 0, 3, 'bambang', 'bambang3445'),
+(5, 'Susi', 'susi@gmail.com', '087788469382', 5000000, 32, 4, 'susi', 'susi1111'),
+(6, 'Jeff', 'jeff@gmail.com', '088123456789', 10000000, 0, 5, 'jeff', 'jeff1234'),
+(7, 'Mark', 'mark@gmail.com', '085332104321', 9000000, 0, 5, 'mark', 'mark5011'),
+(8, 'Ado', 'ado@gmail.com', '089901011212', 4000000, 0, 3, 'adoo', 'ado32132'),
+(9, 'Luke', 'luke@gmail.com', '081122334455', 6000000, 0, 3, 'luke', 'luke8272'),
+(10, 'Jenny', 'jenny@gmail.com', '082855667788', 4000000, 0, 3, 'jenny', 'jenny4464'),
+(11, 'Ken Rocky', 'ken@gmail.com', '086928435778', 500000, 0, 4, 'ken', 'kenrocky123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_donasi`
+--
+
+CREATE TABLE `request_donasi` (
+  `id_request_donasi` int(11) NOT NULL,
+  `id_organisasi` int(11) NOT NULL,
+  `request` varchar(255) NOT NULL,
+  `status_request` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `request_donasi`
+--
+
+INSERT INTO `request_donasi` (`id_request_donasi`, `id_organisasi`, `request`, `status_request`) VALUES
+(1, 1, 'Perlengkapan bayi', 'accepted'),
+(2, 2, 'Buku bacaan anak', 'pending'),
+(3, 3, 'Peralatan Berkebun', 'pending'),
+(4, 4, 'Pakaian layak pakai', 'pending'),
+(5, 5, 'Kebutuhan Lansia', 'pending'),
+(6, 6, 'Alat-alat pertukangan', 'pending'),
+(7, 7, 'Perangkat Elektronik', 'pending'),
+(8, 8, 'Peralatan Otomotif', 'pending'),
+(9, 9, 'Peralatan Olahraga', 'pending'),
+(10, 10, 'Sepatu Layak Pakai', 'pending');
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -532,7 +710,11 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+<<<<<<< HEAD
 ('RHOc0pFFoT9NYF1ZJL1n6t7EvVANbWVVW8tglItN', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieVJnazVid01rajVHVkdKMVlLOFN3NjVWV1F4YVViUE9OR1d6TVJTbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9iYXJhbmcvMSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1747004017);
+=======
+('QZdi1N6ZUAcxxvwoRE3fswpAILvY12k1IxmjXn4f', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibk1IWUpjTnBldTBiM2xwSmh3UEpqZFVNcWU4aXZCRTFRODlnR3hoeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZXF1ZXN0LWRvbmFzaSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1747281466);
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 -- --------------------------------------------------------
 
@@ -602,11 +784,19 @@ INSERT INTO `tukarmarchandise` (`id_tukarMarch`, `id_pembeli`, `id_marchandise`)
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+<<<<<<< HEAD
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
+=======
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+>>>>>>> 6f55ef4 (Added Login and Register)
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -655,7 +845,12 @@ ALTER TABLE `detail_transaksi`
 --
 ALTER TABLE `donasi`
   ADD PRIMARY KEY (`id_donasi`),
+<<<<<<< HEAD
   ADD KEY `fk_idBarang` (`id_barang`);
+=======
+  ADD KEY `fk_idBarang` (`id_barang`),
+  ADD KEY `fk_request_donasi` (`id_request_donasi`);
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 --
 -- Indexes for table `failed_jobs`
@@ -715,8 +910,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `organisasi`
   ADD PRIMARY KEY (`id_organisasi`),
+<<<<<<< HEAD
   ADD KEY `fk_idDonasi` (`id_donasi`),
   ADD KEY `fk_idAlamat` (`id_alamat`);
+=======
+  ADD KEY `fk_idAlamat` (`alamat_organisasi`);
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 --
 -- Indexes for table `password_reset_tokens`
@@ -744,6 +943,16 @@ ALTER TABLE `penitip`
   ADD PRIMARY KEY (`id_penitip`);
 
 --
+<<<<<<< HEAD
+=======
+-- Indexes for table `request_donasi`
+--
+ALTER TABLE `request_donasi`
+  ADD PRIMARY KEY (`id_request_donasi`),
+  ADD KEY `fk_id_organisasi` (`id_organisasi`);
+
+--
+>>>>>>> 6f55ef4 (Added Login and Register)
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -799,7 +1008,11 @@ ALTER TABLE `detail_transaksi`
 -- AUTO_INCREMENT for table `donasi`
 --
 ALTER TABLE `donasi`
+<<<<<<< HEAD
   MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+=======
+  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -853,7 +1066,11 @@ ALTER TABLE `organisasi`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
+<<<<<<< HEAD
   MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+=======
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 --
 -- AUTO_INCREMENT for table `pembeli`
@@ -868,6 +1085,15 @@ ALTER TABLE `penitip`
   MODIFY `id_penitip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+<<<<<<< HEAD
+=======
+-- AUTO_INCREMENT for table `request_donasi`
+--
+ALTER TABLE `request_donasi`
+  MODIFY `id_request_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+>>>>>>> 6f55ef4 (Added Login and Register)
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
@@ -913,7 +1139,12 @@ ALTER TABLE `detail_transaksi`
 -- Constraints for table `donasi`
 --
 ALTER TABLE `donasi`
+<<<<<<< HEAD
   ADD CONSTRAINT `fk_idBarang` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE;
+=======
+  ADD CONSTRAINT `fk_idBarang` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_request_donasi` FOREIGN KEY (`id_request_donasi`) REFERENCES `request_donasi` (`id_request_donasi`) ON DELETE CASCADE ON UPDATE CASCADE;
+>>>>>>> 6f55ef4 (Added Login and Register)
 
 --
 -- Constraints for table `komisi`
@@ -924,6 +1155,7 @@ ALTER TABLE `komisi`
   ADD CONSTRAINT `fk_idTransaksi3` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Constraints for table `organisasi`
 --
 ALTER TABLE `organisasi`
@@ -931,12 +1163,23 @@ ALTER TABLE `organisasi`
   ADD CONSTRAINT `fk_idDonasi` FOREIGN KEY (`id_donasi`) REFERENCES `donasi` (`id_donasi`);
 
 --
+=======
+>>>>>>> 6f55ef4 (Added Login and Register)
 -- Constraints for table `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD CONSTRAINT `fk_idJabatan` FOREIGN KEY (`id_jabatan`) REFERENCES `jabatan` (`id_jabatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+<<<<<<< HEAD
+=======
+-- Constraints for table `request_donasi`
+--
+ALTER TABLE `request_donasi`
+  ADD CONSTRAINT `fk_id_organisasi` FOREIGN KEY (`id_organisasi`) REFERENCES `organisasi` (`id_organisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+>>>>>>> 6f55ef4 (Added Login and Register)
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
