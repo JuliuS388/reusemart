@@ -7,12 +7,16 @@ use App\Models\Barang;
 
 class MainPageController extends Controller
 {
-    public function index()
-{
-    $barangs = Barang::latest()->take(8)->get();
-    return view('main_page.index', compact('barangs'));
-}
+    public function index(Request $request)
+    {
+        $search = $request->input('q');
 
+        $barangs = Barang::when($search, function ($query, $search) {
+            return $query->where('nama_barang', 'like', '%' . $search . '%');
+        })->latest()->take(12)->get();
+
+        return view('main_page.index', compact('barangs', 'search'));
+    }
 
     public function showPublic($id)
     {
@@ -20,3 +24,4 @@ class MainPageController extends Controller
         return view('main_page.show', compact('barang'));
     }
 }
+

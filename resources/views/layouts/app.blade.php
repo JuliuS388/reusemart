@@ -31,15 +31,16 @@
 
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#"><span>ReuseMart</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTokopedia" aria-controls="navbarTokopedia" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{{ route('home') }}"><span>ReuseMart</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTokopedia">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarTokopedia">
 
-                <form class="d-flex w-50 me-auto" role="search">
-                    <input class="form-control me-2 search-bar" type="search" placeholder="Cari di ReuseMart" aria-label="Search">
+                <form class="d-flex w-50 me-auto" role="search" method="GET" action="{{ route('home') }}">
+                    <input class="form-control me-2 search-bar" type="search" name="q" placeholder="Cari di ReuseMart"
+                        value="{{ request('q') }}">
                 </form>
 
                 <div class="d-flex align-items-center gap-2">

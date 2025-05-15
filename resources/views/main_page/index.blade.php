@@ -20,6 +20,17 @@
 
     <h4 id="produk" class="mb-4">Produk Terbaru</h4>
 
+    @if(request('q'))
+        <div class="alert alert-info">
+            Menampilkan hasil pencarian untuk: <strong>{{ request('q') }}</strong>
+        </div>
+    @endif
+
+    @if($barangs->count() == 0)
+        <div class="text-center">
+            <p class="text-muted">Tidak ada produk yang cocok dengan pencarian Anda.</p>
+        </div>
+    @else
     <div class="position-relative">
         <div id="produkCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -31,7 +42,9 @@
                                 <div class="card h-100 shadow-sm border-0">
                                     <img src="{{ asset('storage/' . $barang->foto_thumbnail) }}" class="card-img-top" alt="{{ $barang->nama_barang }}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h6 class="card-title fw-bold">{{ $barang->nama_barang }}</h6>
+                                        <h6 class="card-title fw-bold">
+                                            {!! isset($search) ? str_ireplace($search, "<mark>$search</mark>", e($barang->nama_barang)) : e($barang->nama_barang) !!}
+                                        </h6>
                                         <p class="text-success fw-semibold">Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</p>
                                         <a href="{{ route('main_page.show', $barang->id_barang) }}" class="btn btn-outline-success w-100">Lihat Detail</a>
                                     </div>
@@ -51,6 +64,7 @@
             <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
         </button>
     </div>
+    @endif
 
 </div>
 @endsection
