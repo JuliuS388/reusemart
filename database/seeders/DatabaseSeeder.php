@@ -23,10 +23,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
         PrepopulateSeeder::class,
-<<<<<<< HEAD
-        PenitipSeeder::class,
-=======
->>>>>>> 6f55ef4 (Added Login and Register)
     ]);
     }
 }

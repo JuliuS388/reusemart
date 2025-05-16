@@ -12,13 +12,6 @@ class Penitip extends Model
     use HasFactory;
 
     protected $table = 'penitip';
-<<<<<<< HEAD
-
-
-    protected $fillable = [
-        'nama',
-        'kontak',
-=======
     protected $primaryKey = 'id_penitip';
 
 
@@ -31,6 +24,5 @@ class Penitip extends Model
         'saldo_penitip',
         'poin_penitip',
         'rating_penitip',
->>>>>>> 6f55ef4 (Added Login and Register)
     ];
 }
