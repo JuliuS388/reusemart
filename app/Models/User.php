@@ -10,17 +10,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    // Nama tabel jika bukan "users"
-    // protected $table = 'users';
-
-    // Kolom yang bisa diisi
     protected $fillable = [
         'email',
         'password',
         'role',
     ];
 
-    // Kolom yang disembunyikan saat serialisasi
     protected $hidden = [
         'password',
         'remember_token',
@@ -36,4 +31,6 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pegawai::class, 'id_user');
     }
+
+
 }

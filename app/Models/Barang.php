@@ -26,6 +26,7 @@ class Barang extends Model
         'status_barang',
         'id_kategori',
         'id_penitip',
+        'id_pegawai',
         'deskripsi_barang',
         'berat_barang',
     ];
@@ -38,6 +39,16 @@ class Barang extends Model
     public function penitip()
     {
         return $this->belongsTo(Penitip::class, 'id_penitip');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriBarang::class, 'id_kategori', 'id_kategori');
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai');
     }
 
 

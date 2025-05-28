@@ -9,6 +9,22 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    <form method="GET" action="{{ route('donasi.histori') }}" class="mb-4 row g-3 align-items-center">
+        <div class="col-auto">
+            <select name="organisasi_id" id="organisasi_id" class="form-select">
+                <option value="">-- Semua Organisasi --</option>
+                @foreach($organisasi as $org)
+                    <option value="{{ $org->id_organisasi }}" {{ request('organisasi_id') == $org->id_organisasi ? 'selected' : '' }}>
+                        {{ $org->nama_organisasi }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-auto mt-4">
+            <button type="submit" class="btn btn-primary">Terapkan Filter</button>
+        </div>
+    </form>
+
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
@@ -22,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($donasi as $item)
+            @forelse($donasi as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->requestDonasi->organisasi->nama_organisasi ?? 'N/A' }}</td>
@@ -35,6 +51,7 @@
                     </td>
                 </tr>
 
+                {{-- Modal Edit --}}
                 <div class="modal fade" id="editModal-{{ $item->id_donasi }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
                         <form method="POST" action="{{ route('donasi.update', $item->id_donasi) }}">
@@ -62,7 +79,11 @@
                         </form>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="7" class="text-center">Tidak ada data donasi.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 @endsection

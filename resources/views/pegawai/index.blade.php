@@ -10,6 +10,10 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
     <form action="{{ route('pegawai.index') }}" method="GET" class="input-group mb-3">
         <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-outline-primary">Cari</button>

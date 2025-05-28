@@ -28,13 +28,10 @@
             </div>
 
             <div class="mb-3">
-                <label for="role" class="form-label">Daftar sebagai</label>
-                <select name="role" class="form-select" required>
-                    <option value="">-- Pilih Role --</option>
-                    <option value="admin">Admin</option>
-                    <option value="owner">Owner</option>
-                </select>
+                <label for="role" class="form-label">Role</label>
+                <input type="text" name="role" class="form-control" placeholder="Masukkan role (contoh: admin, owner, gudang)" required>
             </div>
+
 
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success">Daftar</button>

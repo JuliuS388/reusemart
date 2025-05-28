@@ -9,7 +9,6 @@
 </head>
 <body class="bg-light">
 
-    {{-- NAVBAR --}}
     <nav class="navbar navbar-expand-lg bg-white shadow-sm mb-4">
         <div class="container">
             <a class="navbar-brand fw-bold text-success" href="{{ route('home') }}">ReuseMart</a>
@@ -25,12 +24,10 @@
         </div>
     </nav>
 
-    {{-- CONTENT --}}
     <div class="container py-5">
         @yield('content')
     </div>
 
-    {{-- JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

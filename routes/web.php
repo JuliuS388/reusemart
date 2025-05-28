@@ -29,11 +29,9 @@ Route::post('/donasi/update/{id}', [RequestDonasiController::class, 'updateDonas
 
 
 
+Route::resource('barang', BarangController::class);
+Route::get('/barang/{id}/nota/preview', [BarangController::class, 'previewNota'])->name('barang.previewNota');
+Route::get('/barang/{id}/nota/cetak', [BarangController::class, 'cetakNota'])->name('barang.cetakNota');
+Route::get('/barang/{id}/nota/view-pdf', [BarangController::class, 'viewPdfNota'])->name('barang.viewPdfNota');
 
 
-Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
-Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
-Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
-Route::get('/barang/{id}', [BarangController::class, 'show'])->name('barang.show');
-Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
-Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');

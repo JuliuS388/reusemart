@@ -12,8 +12,12 @@ class MainPageController extends Controller
         $search = $request->input('q');
 
         $barangs = Barang::when($search, function ($query, $search) {
-            return $query->where('nama_barang', 'like', '%' . $search . '%');
-        })->latest()->take(12)->get();
+                return $query->where('nama_barang', 'like', '%' . $search . '%');
+            })
+            ->where('status_barang', 'tersedia')
+            ->latest()
+            ->take(12)
+            ->get();
 
         return view('main_page.index', compact('barangs', 'search'));
     }
@@ -24,4 +28,3 @@ class MainPageController extends Controller
         return view('main_page.show', compact('barang'));
     }
 }
-

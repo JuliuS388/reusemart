@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pegawai;
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
+ use App\Models\User;
 
 class PegawaiController extends Controller
 {
@@ -70,11 +71,31 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil diperbarui');
     }
 
+    // public function destroy($id)
+    // {
+    //     $pegawai = Pegawai::findOrFail($id);
+    //     $pegawai->delete();
+
+    //     return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil dihapus');
+    // }
+
     public function destroy($id)
     {
-        $pegawai = Pegawai::findOrFail($id);
+        $pegawai = Pegawai::with('jabatan')->findOrFail($id);
+
+        $jumlahPegawaiDenganJabatan = Pegawai::where('id_jabatan', $pegawai->id_jabatan)->count();
+
+        if ($jumlahPegawaiDenganJabatan <= 1) {
+            return redirect()->route('pegawai.index')->with('error', "{$pegawai->nama_pegawai} dengan role {$pegawai->jabatan->nama_jabatan} tidak boleh dihapus karena jika dihapus, nanti tidak ada user role ini di database.");
+        }
+
         $pegawai->delete();
 
         return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil dihapus');
     }
+
+
+
+
+
 }

@@ -53,11 +53,22 @@ class RequestDonasiController extends Controller
         return redirect()->route('request-donasi.index')->with('success', 'Request berhasil diterima dan donasi dicatat.');
     }
 
-    public function historiDonasi()
+    public function historiDonasi(Request $request)
     {
-        $donasi = Donasi::with('barang', 'requestDonasi.organisasi')->get();
-        return view('request_donasi.histori', compact('donasi'));
+        $query = Donasi::with('barang', 'requestDonasi.organisasi');
+
+        if ($request->has('organisasi_id') && $request->organisasi_id != '') {
+            $query->whereHas('requestDonasi', function ($q) use ($request) {
+                $q->where('id_organisasi', $request->organisasi_id);
+            });
+        }
+
+        $donasi = $query->get();
+        $organisasi = Organisasi::all();
+
+        return view('request_donasi.histori', compact('donasi', 'organisasi'));
     }
+
 
     public function updateDonasi(Request $request, $id)
     {

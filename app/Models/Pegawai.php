@@ -18,13 +18,20 @@ class Pegawai extends Model
         'id_jabatan',
         'email_pegawai',
         'username_pegawai',
-        'tanggal_lahir_pegawai'
+        'tanggal_lahir_pegawai',
+        //'id_user'
     ];
 
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class, 'id_jabatan');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
 }
 
 
