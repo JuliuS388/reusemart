@@ -1,65 +1,124 @@
+<!-- resources/views/barang/nota.blade.php -->
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Nota Penitipan</title>
     <style>
         body {
-            font-family: DejaVu Sans, sans-serif;
-            font-size: 14px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
         }
-        .title {
-            text-align: center;
+        .nota-box {
+            border: 1px solid #000;
+            padding: 20px;
+            width: 100%;
+        }
+        .header {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .sub-header {
             margin-bottom: 20px;
         }
-        .info p {
-            margin: 0;
-            padding: 4px 0;
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 5px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
         }
-        th, td {
-            border: 1px solid #444;
-            padding: 8px;
-            text-align: left;
+        td, th {
+            padding: 6px 4px;
+            vertical-align: top;
+        }
+        .right {
+            text-align: right;
+        }
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #000;
         }
     </style>
 </head>
 <body>
-    <div class="title">Nota Penitipan Barang</div>
-
-    <div class="info">
-        <p><strong>Nama Barang:</strong> {{ $barang->nama_barang }}</p>
-        <p><strong>Kode Produk:</strong> {{ $barang->kode_produk }}</p>
-        <p><strong>Penitip:</strong> {{ $barang->penitip->nama_penitip }}</p>
-        <p><strong>Tanggal Masuk:</strong> {{ \Carbon\Carbon::parse($barang->tanggal_masuk)->format('d-m-Y') }}</p>
-        <p><strong>Pegawai QC:</strong> {{ $barang->pegawai->nama_pegawai }}</p>
+<div class="nota-box">
+    <div class="header">
+        ReUse Mart
+    </div>
+    <div class="sub-header">
+        Jl. Green Eco Park No. 456 Yogyakarta
     </div>
 
-    <table>
-        <tr>
-            <th>Deskripsi</th>
-            <td>{{ $barang->deskripsi_barang }}</td>
-        </tr>
-        <tr>
-            <th>Berat</th>
-            <td>{{ $barang->berat_barang }}</td>
-        </tr>
-        <tr>
-            <th>Harga</th>
-            <td>Rp {{ number_format($barang->harga_barang, 0, ',', '.') }}</td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td>{{ $barang->status_barang }}</td>
-        </tr>
-    </table>
+    <div class="section">
+        <table>
+            <tr>
+                <td><strong>No Nota</strong></td>
+                <td>: {{ $nomor_nota }}</td>
+            </tr>
+            <tr>
+                <td><strong>Tanggal Penitipan</strong></td>
+                <td>: {{ $tanggal_masuk }}</td>
+            </tr>
+            <tr>
+                <td><strong>Masa Penitipan Sampai</strong></td>
+                <td>: {{ $tanggal_batas }}</td>
+            </tr>
+        </table>
+    </div>
 
-    <p style="margin-top: 40px;">Dicetak pada: {{ now()->format('d-m-Y H:i') }}</p>
+    <div class="section">
+        <div class="section-title">Penitip</div>
+        <div>
+            T{{ $penitip->id_penitip }} / {{ $penitip->nama_penitip }}<br>
+            {{ $penitip->alamat_penitip }}
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Daftar Barang Dititipkan</div>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th class="right">Harga</th>
+                    <th>Berat</th>
+                    <th>Garansi</th>
+                    <th>QC</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($barangs as $barang)
+                <tr>
+                    <td>{{ $barang->nama_barang }}</td>
+                    <td class="right">Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</td>
+                    <td>{{ $barang->berat_barang }}</td>
+                    <td>
+                        @if($barang->tanggal_garansi)
+                            {{ \Carbon\Carbon::parse($barang->tanggal_garansi)->isoFormat('MMMM Y') }}
+                        @else
+                            -
+                        @endif
+                    </td>
+                    <td>
+                        @if($barang->pegawai)
+                            P{{ $barang->pegawai->id_pegawai }} - {{ $barang->pegawai->nama_pegawai }}
+                        @else
+                            -
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

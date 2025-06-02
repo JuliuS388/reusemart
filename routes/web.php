@@ -30,8 +30,9 @@ Route::post('/donasi/update/{id}', [RequestDonasiController::class, 'updateDonas
 
 
 Route::resource('barang', BarangController::class);
-Route::get('/barang/{id}/nota/preview', [BarangController::class, 'previewNota'])->name('barang.previewNota');
-Route::get('/barang/{id}/nota/cetak', [BarangController::class, 'cetakNota'])->name('barang.cetakNota');
 Route::get('/barang/{id}/nota/view-pdf', [BarangController::class, 'viewPdfNota'])->name('barang.viewPdfNota');
+
+Route::get('/barang/nota-preview-penitip/{id}', [BarangController::class, 'previewNotaPenitip'])->name('barang.previewNotaPenitip');
+Route::get('/barang/nota-cetak-penitip/{id}', [BarangController::class, 'cetakNotaPenitip'])->name('barang.cetakNotaPenitip');
 
 

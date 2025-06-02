@@ -45,8 +45,8 @@
                     @endif
                 </td>
                 <td>
-                    @if($item->tanggal_masuk)
-                        {{ \Carbon\Carbon::parse($item->tanggal_masuk)->addDays(30)->format('d-m-Y') }}
+                    @if($item->tanggal_batas_penitipan)
+                        {{ \Carbon\Carbon::parse($item->tanggal_batas_penitipan)->format('d-m-Y') }}
                     @else
                         -
                     @endif
@@ -61,7 +61,7 @@
                             Hapus
                         </button>
                     </form>
-                    <a href="{{ route('barang.previewNota', $item->id_barang) }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ route('barang.previewNotaPenitip', $item->id_penitip) }}" target="_blank" class="btn btn-outline-primary btn-sm">
                         Cetak Nota
                     </a>
                 </td>

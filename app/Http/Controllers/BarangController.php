@@ -9,6 +9,7 @@ use App\Models\Penitip;
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 
 class BarangController extends Controller
@@ -69,11 +70,14 @@ class BarangController extends Controller
                 $validated[$field] = $request->file($field)->store('barang', 'public');
             }
         }
-
+        
+        $validated['tanggal_batas_penitipan'] = \Carbon\Carbon::parse($validated['tanggal_masuk'])->addDays(30);
         Barang::create($validated);
 
         $barangBaru = Barang::latest()->first();
-        return redirect()->route('barang.previewNota', $barangBaru->id_barang);
+        $idPenitip = $barangBaru->id_penitip;
+        return redirect()->route('barang.previewNotaPenitip', $idPenitip);
+
 
 
     }
@@ -140,28 +144,73 @@ class BarangController extends Controller
         return redirect()->route('barang.index')->with('success', 'Barang berhasil dihapus');
     }
 
-    public function previewNota($id)
-    {
-        $barang = Barang::with(['penitip', 'pegawai'])->findOrFail($id);
-        return view('barang.preview_nota', compact('barang'));
-    }
-
     public function viewPdfNota($id)
     {
         $barang = Barang::with(['penitip', 'pegawai'])->findOrFail($id);
-        $pdf = Pdf::loadView('barang.nota', compact('barang'));
+        $id_barang = $barang->id_barang ?? $barang->id;
+        $nomorNota = $this->generateNotaNumber($id_barang);
+
+        $pdf = Pdf::loadView('barang.nota', [
+            'barang' => $barang,
+            'nomor_nota' => $nomorNota,
+            'tanggal_masuk' => Carbon::parse($barang->tanggal_masuk)->format('d/m/Y H:i:s'),
+            'tanggal_batas' => Carbon::parse($barang->tanggal_batas_penitipan)->format('d/m/Y'),
+            'penitip' => $barang->penitip,
+            'pegawai' => $barang->pegawai,
+        ]);
 
         return $pdf->stream('preview-nota-barang.pdf');
     }
 
 
-    public function cetakNota($id)
+    private function generateNotaNumber($id_barang)
     {
-        $barang = Barang::with(['penitip', 'pegawai'])->findOrFail($id);
-        $pdf = Pdf::loadView('barang.nota', compact('barang'));
-
-        return $pdf->download('nota-penitipan-barang-' . $barang->id_barang . '.pdf');
+        $tanggal = Carbon::now();
+        $tahun = $tanggal->format('Y'); // 4 digit tahun, misal 2024
+        $bulan = $tanggal->format('m'); // 2 digit bulan, misal 06
+        return "$tahun.$bulan." . str_pad($id_barang, 3, '0', STR_PAD_LEFT);
     }
+
+
+public function previewNotaPenitip($id)
+{
+    $penitip = Penitip::findOrFail($id);
+    $barangPertama = Barang::where('id_penitip', $id)->firstOrFail();
+
+    return view('barang.preview_nota_penitip', [
+        'penitip' => $penitip,
+        'barang' => $barangPertama
+    ]);
+}
+
+public function cetakNotaPenitip($id)
+{
+    $penitip = Penitip::findOrFail($id);
+    $barangs = Barang::with('pegawai')
+        ->where('id_penitip', $penitip->id_penitip)
+        ->get();
+
+    if ($barangs->isEmpty()) {
+        return redirect()->route('barang.index')->with('error', 'Penitip ini tidak memiliki barang.');
+    }
+
+    $tanggalMasuk = Carbon::parse($barangs->first()->tanggal_masuk)->format('d/m/Y H:i:s');
+    $tanggalBatas = Carbon::parse($barangs->first()->tanggal_batas_penitipan)->format('d/m/Y');
+
+    $nomorNota = $this->generateNotaNumber($barangs->first()->id_barang);
+
+    $pdf = Pdf::loadView('barang.nota', [
+        'barangs' => $barangs,
+        'barang' => $barangs->first(),
+        'nomor_nota' => $nomorNota,
+        'tanggal_masuk' => $tanggalMasuk,
+        'tanggal_batas' => $tanggalBatas,
+        'penitip' => $penitip,
+    ]);
+
+    return $pdf->stream('nota_penitip_'.$penitip->id_penitip.'.pdf');
+}
+
 
 
 

@@ -44,6 +44,16 @@
                         <td>{{ \Carbon\Carbon::parse($barang->tanggal_masuk)->format('d-m-Y') }}</td>
                     </tr>
                     <tr>
+                        <th>Tanggal Batas Penitipan</th>
+                        <td>
+                            @if(filled($barang->tanggal_batas_penitipan))
+                                {{ \Carbon\Carbon::parse($barang->tanggal_batas_penitipan)->format('d-m-Y') }}
+                            @else
+                                Belum ditentukan
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Tanggal Garansi</th>
                         <td>
                             @if(filled($barang->tanggal_garansi))

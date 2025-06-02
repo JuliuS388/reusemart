@@ -29,6 +29,7 @@ class Barang extends Model
         'id_pegawai',
         'deskripsi_barang',
         'berat_barang',
+        'tanggal_batas_penitipan',
     ];
 
     public function donasi()
