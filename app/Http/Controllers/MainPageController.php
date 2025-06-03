@@ -24,7 +24,8 @@ class MainPageController extends Controller
 
     public function showPublic($id)
     {
-        $barang = Barang::findOrFail($id);
+        $barang = Barang::with('penitip')->findOrFail($id);
         return view('main_page.show', compact('barang'));
     }
+
 }

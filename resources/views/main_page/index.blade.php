@@ -2,22 +2,57 @@
 
 @section('content')
 <div class="container position-relative">
-    
-
+    {{-- Banner utama --}}
     <div id="promoCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="p-5 rounded-4 text-white d-flex justify-content-between align-items-center" style="background-color: #42b549;">
                     <div>
-                        <h2 class="fw-bold">Yuk, belanja di ReuseMart</h2>
-                        <p class="fs-5">Cek barang dari beragam kategori</p>
-                        <a href="#produk" class="btn btn-light fw-semibold px-4">Cek Sekarang</a>
+                        <h2 class="fw-bold">Yuk, belanja di <span class="text-warning">ReuseMart</span></h2>
+                        <p class="fs-5">Platform barang berkualitas dan terpercaya</p>
+                        <a href="#produk" class="btn btn-light fw-semibold px-4">Lihat Produk</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    {{-- Tentang ReuseMart --}}
+    <div class="mb-5">
+        <h4 class="fw-bold mb-3">Tentang ReuseMart</h4>
+        <p class="text-muted">
+            ReuseMart adalah platform marketplace yang menghubungkan penitip dengan pembeli untuk jual beli barang bekas berkualitas. Melalui sistem titip jual yang aman dan terpercaya, ReuseMart membantu penitip memasarkan barang preloved-nya, sementara pembeli bisa mendapatkan produk berkualitas dengan harga terjangkau—mendukung gaya hidup hemat dan ramah lingkungan.
+    </div>
+
+    {{-- Alur Belanja --}}
+    <div class="mb-5">
+        <h4 class="fw-bold mb-3">Cara Belanja di ReuseMart</h4>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="p-3 border rounded">
+                    <i class="bi bi-search fs-2 mb-2 text-primary"></i>
+                    <h6>Cari Produk</h6>
+                    <p class="text-muted small">Jelajahi produk dari berbagai kategori.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 border rounded">
+                    <i class="bi bi-cart-check fs-2 mb-2 text-success"></i>
+                    <h6>Tambah ke Keranjang</h6>
+                    <p class="text-muted small">Pilih produk yang kamu suka dan masukkan ke keranjang.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 border rounded">
+                    <i class="bi bi-cash-coin fs-2 mb-2 text-warning"></i>
+                    <h6>Selesaikan Pembayaran</h6>
+                    <p class="text-muted small">Lakukan pembayaran dan tunggu barang dikirim.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Produk Terbaru --}}
     <h4 id="produk" class="mb-4">Produk Terbaru</h4>
 
     @if(request('q'))
@@ -65,6 +100,5 @@
         </button>
     </div>
     @endif
-
 </div>
 @endsection

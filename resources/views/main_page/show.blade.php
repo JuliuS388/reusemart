@@ -57,6 +57,16 @@
             </div>
             @endif
 
+            @if($barang->penitip && $barang->penitip->rating_penitip)
+                <div class="mb-3">
+                    <h6 class="fw-bold">Rating Penitip</h6>
+                    <span class="badge bg-warning text-dark">
+                        ⭐ {{ number_format($barang->penitip->rating_penitip, 1) }} / 5
+                    </span>
+                </div>
+            @endif
+
+
             <div class="d-flex gap-2 mb-3">
                 <button class="btn btn-success w-50">+ Keranjang</button>
                 <button class="btn btn-outline-success w-50">Beli</button>
