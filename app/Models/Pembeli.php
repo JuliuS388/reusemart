@@ -17,4 +17,10 @@ class Pembeli extends Model
     {
         return $this->hasOne(Alamat::class, 'id_pembeli', 'id_pembeli');
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_pembeli', 'id_pembeli');
+    }
+
 }

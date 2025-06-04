@@ -21,14 +21,26 @@ class BarangController extends Controller
         $barangQuery = Barang::with(['kategori', 'penitip', 'pegawai']);
 
         if ($search) {
-            $barangQuery->where('nama_barang', 'like', "%$search%")
-                        ->orWhere('kode_produk', 'like', "%$search%");
+            $barangQuery->where(function ($query) use ($search) {
+                $query->where('nama_barang', 'like', "%$search%")
+                    ->orWhere('kode_produk', 'like', "%$search%")
+                    ->orWhereHas('kategori', function ($q) use ($search) {
+                        $q->where('nama_kategori', 'like', "%$search%");
+                    })
+                    ->orWhereHas('penitip', function ($q) use ($search) {
+                        $q->where('nama_penitip', 'like', "%$search%");
+                    })
+                    ->orWhereHas('pegawai', function ($q) use ($search) {
+                        $q->where('nama_pegawai', 'like', "%$search%");
+                    });
+            });
         }
 
         $barang = $barangQuery->get();
 
         return view('barang.index', compact('barang'));
     }
+
 
     public function show($id)
     {

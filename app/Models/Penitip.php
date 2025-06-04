@@ -21,4 +21,32 @@ class Penitip extends Model
         'username_penitip',
         'password_penitip'
     ];
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, 'id_penitip');
+    }
+
+    public function updateRating()
+    {
+        $barangIds = $this->barang()->pluck('id_barang');
+
+        if ($barangIds->isEmpty()) {
+            $this->rating_penitip = null;
+            $this->save();
+            return;
+        }
+
+        $avgRating = \DB::table('detail_transaksi as dt')
+            ->join('transaksi as t', 'dt.id_transaksi', '=', 't.id_transaksi')
+            ->whereIn('dt.id_barang', $barangIds)
+            ->where('t.status_transaksi', 'Selesai')
+            ->whereNotNull('dt.rating')
+            ->avg('dt.rating');
+
+        $this->rating_penitip = $avgRating ? round($avgRating, 2) : null;
+        $this->save();
+    }
+
+
 }

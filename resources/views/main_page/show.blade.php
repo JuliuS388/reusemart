@@ -57,14 +57,15 @@
             </div>
             @endif
 
-            @if($barang->penitip && $barang->penitip->rating_penitip)
+            @if($barang->penitip)
                 <div class="mb-3">
                     <h6 class="fw-bold">Rating Penitip</h6>
                     <span class="badge bg-warning text-dark">
-                        ⭐ {{ number_format($barang->penitip->rating_penitip, 1) }} / 5
+                        ⭐ {{ number_format($barang->penitip->rating_penitip ?? 0, 1) }} / 5
                     </span>
                 </div>
             @endif
+
 
 
             <div class="d-flex gap-2 mb-3">

@@ -6,6 +6,11 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\RequestDonasiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\TransaksiController;
+
+Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayat'])->name('transaksi.riwayat');
+
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -18,6 +23,12 @@ Route::get('/', function () {
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+
+Route::get('/profil', [PembeliController::class, 'profil'])->name('pembeli.profil');
+Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayat'])->name('transaksi.riwayat');
+Route::post('/beri-rating/{id}', [PembeliController::class, 'beriRating'])->name('pembeli.beriRating');
+
 
 
 Route::resource('pegawai', PegawaiController::class);
