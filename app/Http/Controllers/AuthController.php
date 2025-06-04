@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Pembeli;
 
 class AuthController extends Controller
 {
@@ -15,27 +16,38 @@ class AuthController extends Controller
     }
 
         public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+        {
+            $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
 
-            switch ($user->role) {
-                case 'admin':
-                    return redirect()->route('pegawai.index');
-                case 'owner':
-                    return redirect()->route('request-donasi.index');
-                case 'gudang':
-                    return redirect()->route('barang.index');
-                default:
-                    Auth::logout();
-                    return redirect()->route('login.form')->with('error', 'Role tidak dikenali.');
+                switch ($user->role) {
+                    case 'admin':
+                        return redirect()->route('pegawai.index');
+                    case 'owner':
+                        return redirect()->route('request-donasi.index');
+                    case 'gudang':
+                        return redirect()->route('barang.index');
+                    case 'pembeli':
+                        $pembeli = Pembeli::with('alamat')->where('id_user', $user->id_user)->first();
+
+                        if ($pembeli) {
+                            session(['pembeli' => $pembeli]); // simpan ke session
+                            return redirect()->route('home'); // arahkan ke halaman utama
+                        } else {
+                            Auth::logout();
+                            return redirect()->route('login.form')->with('error', 'Data pembeli tidak ditemukan.');
+                        }
+
+                    default:
+                        Auth::logout();
+                        return redirect()->route('login.form')->with('error', 'Role tidak dikenali.');
+                }
             }
-        }
 
-        return back()->with('error', 'Email atau password salah.');
-    }
+            return back()->with('error', 'Email atau password salah.');
+        }
 
 
     public function showRegisterForm()
@@ -62,6 +74,8 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        session()->forget('pembeli'); // Pastikan session pembeli dihapus
         return redirect()->route('login.form');
     }
+
 }

@@ -18,6 +18,11 @@
         </div>
     </div>
 
+    @if(session('pembeli'))
+    <p>Selamat datang, {{ session('pembeli')->nama_pembeli }}</p>
+    @endif
+
+
     <h4 id="produk" class="mb-4">Produk Terbaru</h4>
 
     @if(request('q'))

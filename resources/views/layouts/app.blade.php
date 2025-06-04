@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ReuseMart</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         .navbar-brand span {
             color: #03AC0E;
@@ -37,7 +38,6 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarTokopedia">
-
                 <form class="d-flex w-50 me-auto" role="search" method="GET" action="{{ route('home') }}">
                     <input class="form-control me-2 search-bar" type="search" name="q" placeholder="Cari di ReuseMart"
                         value="{{ request('q') }}">
@@ -47,8 +47,27 @@
                     <a href="#" class="text-dark">
                         <i class="bi bi-cart3 fs-5"></i>
                     </a>
-                    <a href="{{ route('login.form') }}" class="btn btn-login">Masuk</a>
-                    <a href="{{ route('register.form') }}" class="btn btn-daftar">Daftar</a>
+
+                    @if(session('pembeli'))
+                        <div class="dropdown">
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                                <li><h6 class="dropdown-header">{{ session('pembeli')->nama_pembeli }}</h6></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <a href="{{ route('login.form') }}" class="btn btn-login">Masuk</a>
+                        <a href="{{ route('register.form') }}" class="btn btn-daftar">Daftar</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -59,6 +78,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </body>
 </html>

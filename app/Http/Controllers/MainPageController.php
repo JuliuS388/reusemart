@@ -8,19 +8,18 @@ use App\Models\Barang;
 class MainPageController extends Controller
 {
     public function index(Request $request)
-    {
-        $search = $request->input('q');
+{
+    $search = $request->input('q');
 
-        $barangs = Barang::when($search, function ($query, $search) {
-                return $query->where('nama_barang', 'like', '%' . $search . '%');
-            })
-            ->where('status_barang', 'tersedia')
-            ->latest()
-            ->take(12)
-            ->get();
+    $barangs = Barang::when($search, function ($query, $search) {
+        return $query->where('nama_barang', 'like', '%' . $search . '%');
+    })->latest()->take(12)->get();
 
-        return view('main_page.index', compact('barangs', 'search'));
-    }
+    $pembeli = session('pembeli'); // akses data pembeli
+
+    return view('main_page.index', compact('barangs', 'pembeli'));
+}
+
 
     public function showPublic($id)
     {
