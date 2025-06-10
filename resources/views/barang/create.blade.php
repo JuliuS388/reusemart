@@ -17,7 +17,6 @@
     <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row g-3">
-            <!-- input biasa -->
             <div class="col-md-6">
                 <label class="form-label">Nama Barang</label>
                 <input type="text" name="nama_barang" class="form-control" value="{{ old('nama_barang') }}" required>
@@ -51,7 +50,6 @@
                 <input type="text" name="status_barang" class="form-control" value="{{ old('status_barang') }}">
             </div>
 
-            <!-- dropdown kategori -->
             <div class="col-md-6">
                 <label class="form-label">Kategori Barang</label>
                 <select name="id_kategori" class="form-select" required>
@@ -65,7 +63,6 @@
                 </select>
             </div>
 
-            <!-- dropdown penitip -->
             <div class="col-md-6">
                 <label class="form-label">Penitip</label>
                 <select name="id_penitip" class="form-select" required>
@@ -93,7 +90,6 @@
             </div>
 
 
-            <!-- input file -->
             <div class="col-md-6">
                 <label class="form-label">Foto Thumbnail</label>
                 <input type="file" name="foto_thumbnail" class="form-control">

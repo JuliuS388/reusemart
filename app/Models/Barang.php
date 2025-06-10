@@ -27,9 +27,11 @@ class Barang extends Model
         'id_kategori',
         'id_penitip',
         'id_pegawai',
+        'id_hunter',              // ditambahkan
         'deskripsi_barang',
         'berat_barang',
         'tanggal_batas_penitipan',
+        'perpanjangan',           // ditambahkan
     ];
 
     public function donasi()
@@ -52,11 +54,13 @@ class Barang extends Model
         return $this->belongsTo(Pegawai::class, 'id_pegawai');
     }
 
+    public function hunter()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_hunter');
+    }
+
     public function detailTransaksi()
     {
         return $this->hasMany(DetailTransaksi::class, 'id_barang');
     }
-
-
-
 }

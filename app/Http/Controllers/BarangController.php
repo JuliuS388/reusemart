@@ -14,9 +14,37 @@ use Illuminate\Support\Carbon;
 
 class BarangController extends Controller
 {
+    // public function index(Request $request)
+    // {
+    //     $search = $request->search;
+
+    //     $barangQuery = Barang::with(['kategori', 'penitip', 'pegawai']);
+
+    //     if ($search) {
+    //         $barangQuery->where(function ($query) use ($search) {
+    //             $query->where('nama_barang', 'like', "%$search%")
+    //                 ->orWhere('kode_produk', 'like', "%$search%")
+    //                 ->orWhereHas('kategori', function ($q) use ($search) {
+    //                     $q->where('nama_kategori', 'like', "%$search%");
+    //                 })
+    //                 ->orWhereHas('penitip', function ($q) use ($search) {
+    //                     $q->where('nama_penitip', 'like', "%$search%");
+    //                 })
+    //                 ->orWhereHas('pegawai', function ($q) use ($search) {
+    //                     $q->where('nama_pegawai', 'like', "%$search%");
+    //                 });
+    //         });
+    //     }
+
+    //     $barang = $barangQuery->get();
+
+    //     return view('barang.index', compact('barang'));
+    // }
+
     public function index(Request $request)
     {
         $search = $request->search;
+        $garansi = $request->garansi;
 
         $barangQuery = Barang::with(['kategori', 'penitip', 'pegawai']);
 
@@ -36,10 +64,17 @@ class BarangController extends Controller
             });
         }
 
+        if ($garansi === 'ada') {
+            $barangQuery->whereNotNull('tanggal_garansi');
+        } elseif ($garansi === 'tidak') {
+            $barangQuery->whereNull('tanggal_garansi');
+        }
+
         $barang = $barangQuery->get();
 
         return view('barang.index', compact('barang'));
     }
+
 
 
     public function show($id)
@@ -76,7 +111,6 @@ class BarangController extends Controller
             'berat_barang' => 'nullable|string|max:255',
         ]);
 
-        // Upload foto jika ada
         foreach (['foto_thumbnail', 'foto1_barang', 'foto2_barang'] as $field) {
             if ($request->hasFile($field)) {
                 $validated[$field] = $request->file($field)->store('barang', 'public');
@@ -125,7 +159,6 @@ class BarangController extends Controller
             'berat_barang' => 'nullable|string|max:255',
         ]);
 
-        // Upload foto dan hapus file lama jika ada
         foreach (['foto_thumbnail', 'foto1_barang', 'foto2_barang'] as $field) {
             if ($request->hasFile($field)) {
                 if ($barang->$field) {
@@ -143,8 +176,7 @@ class BarangController extends Controller
     public function destroy($id)
     {
         $barang = Barang::findOrFail($id);
-
-        // Hapus foto yang tersimpan
+        
         foreach (['foto_thumbnail', 'foto1_barang', 'foto2_barang'] as $field) {
             if ($barang->$field) {
                 Storage::disk('public')->delete($barang->$field);

@@ -19,7 +19,6 @@ class Penitip extends Model
         'poin_penitip',
         'rating_penitip',
         'username_penitip',
-        'password_penitip'
     ];
 
     public function barang()

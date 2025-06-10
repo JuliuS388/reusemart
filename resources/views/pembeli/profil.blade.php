@@ -3,14 +3,12 @@
 @section('content')
 <div class="container">
 
-    <!-- Tombol kembali -->
     <div class="mb-4">
         <a href="{{ route('home') }}" class="btn btn-outline-success">
             <i class="bi bi-house-door-fill me-1"></i> Kembali ke Halaman Utama
         </a>
     </div>
 
-    <!-- Card profil -->
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-sm border-0">

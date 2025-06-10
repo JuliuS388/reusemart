@@ -1,4 +1,3 @@
-<!-- resources/views/barang/nota.blade.php -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

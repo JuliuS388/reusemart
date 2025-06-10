@@ -14,9 +14,22 @@
     <div class="alert alert-danger">{{ session('error') }}</div>
 @endif
 
-<form action="{{ route('barang.index') }}" method="GET" class="input-group mb-3">
-    <input type="text" name="search" class="form-control" placeholder="Cari barang..." value="{{ request('search') }}">
-    <button type="submit" class="btn btn-outline-primary">Cari</button>
+<form action="{{ route('barang.index') }}" method="GET" class="row g-2 align-items-center mb-3">
+    <div class="col-md-5">
+        <input type="text" name="search" class="form-control" placeholder="Cari barang..." value="{{ request('search') }}">
+    </div>
+
+    <div class="col-md-3">
+        <select name="garansi" class="form-select">
+            <option value="">Semua</option>
+            <option value="ada" {{ request('garansi') == 'ada' ? 'selected' : '' }}>Barang Bergaransi</option>
+            <option value="tidak" {{ request('garansi') == 'tidak' ? 'selected' : '' }}>Barang Tidak Bergaransi</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-outline-primary w-100">Cari</button>
+    </div>
 </form>
 
 <div class="table-responsive">
@@ -27,18 +40,26 @@
                 <th>Kode</th>
                 <th>Harga</th>
                 <th>Status</th>
+                <th>Garansi</th>
                 <th>Foto</th>
                 <th>Batas Masa Penitipan</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($barang as $item)
+            @forelse($barang as $item)
             <tr>
                 <td>{{ $item->nama_barang }}</td>
                 <td>{{ $item->kode_produk }}</td>
                 <td>Rp{{ number_format($item->harga_barang, 0, ',', '.') }}</td>
                 <td>{{ $item->status_barang }}</td>
+                <td>
+                    @if($item->tanggal_garansi)
+                        {{ \Carbon\Carbon::parse($item->tanggal_garansi)->format('d-m-Y') }}
+                    @else
+                        Tidak ada garansi
+                    @endif
+                </td>
                 <td>
                     @if($item->foto_thumbnail)
                         <img src="{{ asset('storage/' . $item->foto_thumbnail) }}" width="70">
@@ -66,9 +87,12 @@
                     </a>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="8" class="text-center">Tidak ada data barang.</td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
-
 </div>
 @endsection

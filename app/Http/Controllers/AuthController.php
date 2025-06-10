@@ -29,6 +29,8 @@ class AuthController extends Controller
                         return redirect()->route('request-donasi.index');
                     case 'gudang':
                         return redirect()->route('barang.index');
+                    case 'cs':
+                        return redirect()->route('tukarmerch.index');
                     case 'pembeli':
                         $pembeli = Pembeli::with('alamat')->where('id_user', $user->id_user)->first();
 

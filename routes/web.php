@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\TukarMerchandiseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\BarangController;
@@ -8,6 +8,9 @@ use App\Http\Controllers\RequestDonasiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\LaporanKomisiController;
+use App\Http\Controllers\LaporanStokGudangController;
 
 Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayat'])->name('transaksi.riwayat');
 
@@ -41,6 +44,25 @@ Route::post('/request-donasi/accept/{id}', [RequestDonasiController::class, 'sto
 Route::get('/histori-donasi', [RequestDonasiController::class, 'historiDonasi'])->name('donasi.histori');
 Route::post('/donasi/update/{id}', [RequestDonasiController::class, 'updateDonasi'])->name('donasi.update');
 
+Route::get('/laporan-penjualan', [LaporanController::class, 'index'])->name('laporan.penjualan');
+Route::get('/laporan/penjualan', [LaporanController::class, 'index'])->name('laporan.penjualan.index');
+Route::get('/laporan/penjualan/pdf', [LaporanController::class, 'exportPdf'])->name('laporan.penjualan.pdf');
+Route::get('/laporan/penjualan/preview', [LaporanController::class, 'previewPdf'])->name('laporan.penjualan.preview');
+
+Route::get('/laporan/komisi', [LaporanKomisiController::class, 'index'])->name('laporan.komisi');
+Route::get('/laporan/komisi', [LaporanKomisiController::class, 'index'])->name('laporan.komisi.index');
+Route::get('/laporan/komisi/pdf', [LaporanKomisiController::class, 'cetakPDF'])->name('laporan.komisi.pdf');
+Route::get('/laporan/komisi/preview', function () {
+    return view('laporan.komisi_preview');
+})->name('laporan.komisi.preview');
+
+Route::get('/laporan/stok-gudang', [LaporanStokGudangController::class, 'stokGudang'])->name('laporan.stokgudang');
+Route::get('/laporan/stok-gudang/pdf', [LaporanStokGudangController::class, 'stokGudangPdf'])->name('laporan.stokgudang.pdf');
+Route::get('/laporan/stok-gudang/preview', [LaporanStokGudangController::class, 'previewStokGudang'])->name('laporan.stokgudang.preview');
+
+
+
+
 
 
 Route::resource('barang', BarangController::class);
@@ -48,3 +70,7 @@ Route::get('/barang/{id}/nota/view-pdf', [BarangController::class, 'viewPdfNota'
 
 Route::get('/barang/nota-preview-penitip/{id}', [BarangController::class, 'previewNotaPenitip'])->name('barang.previewNotaPenitip');
 Route::get('/barang/nota-cetak-penitip/{id}', [BarangController::class, 'cetakNotaPenitip'])->name('barang.cetakNotaPenitip');
+
+
+Route::get('/tukarmerch', [TukarMerchandiseController::class, 'index'])->name('tukarmerch.index');
+Route::post('/tukarmerch/update/{id}', [TukarMerchandiseController::class, 'update'])->name('tukarmerch.update');
