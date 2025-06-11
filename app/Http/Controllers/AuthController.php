@@ -80,4 +80,43 @@ class AuthController extends Controller
         return redirect()->route('login.form');
     }
 
+    /**
+     * Login API untuk Flutter/mobile
+     */
+    public function apiLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if (!$user || !\Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'message' => 'Email atau password salah',
+            ], 401);
+        }
+
+        // Jika role pembeli, lanjutkan
+        if ($user->role === 'pembeli') {
+            // Ambil data pembeli terkait user
+            $pembeli = \App\Models\Pembeli::where('id_user', $user->id_user)->first();
+            return response()->json([
+                'message' => 'Login berhasil',
+                'role' => $user->role,
+                'user' => [
+                    'id_user' => $user->id_user,
+                    'email' => $user->email,
+                    'nama' => $pembeli ? $pembeli->nama_pembeli : null,
+                ],
+            ]);
+        }
+
+        // Jika bukan pembeli, tolak
+        return response()->json([
+            'message' => 'Role tidak diizinkan',
+            'role' => $user->role,
+        ], 403);
+    }
+
 }
